@@ -39,24 +39,28 @@ def copy_to_clipboard():
 root = tk.Tk()
 root.title("Password Generator")
 
-# Set window size
-root.geometry("400x200")
+# Set window size and background color
+root.geometry("400x250")
+root.configure(bg="#2C3E50")
 
-# Create UI elements
-length_label = tk.Label(root, text="Enter Password Length:", font=('Arial', 12))
-length_label.pack(pady=10)
+# Create UI elements with enhanced styles
+frame = tk.Frame(root, bg="#2C3E50")
+frame.pack(pady=20)
 
-length_entry = tk.Entry(root, width=20, font=('Arial', 12))
-length_entry.pack(pady=5)
+length_label = tk.Label(frame, text="Enter Password Length:", font=('Arial', 12), bg="#2C3E50", fg="white")
+length_label.grid(row=0, column=0, pady=10)
 
-generate_button = tk.Button(root, text="Generate Password", command=generate_password, font=('Arial', 12))
-generate_button.pack(pady=10)
+length_entry = tk.Entry(frame, width=20, font=('Arial', 12), bg="#ECF0F1", relief="flat")
+length_entry.grid(row=0, column=1, pady=5, padx=5)
 
-password_entry = tk.Entry(root, width=40, font=('Arial', 12), state=tk.DISABLED)
-password_entry.pack(pady=5)
+generate_button = tk.Button(frame, text="Generate Password", command=generate_password, font=('Arial', 12), bg="#27AE60", fg="white", relief="flat", activebackground="#229954")
+generate_button.grid(row=1, columnspan=2, pady=10)
 
-copy_button = tk.Button(root, text="Copy to Clipboard", command=copy_to_clipboard, font=('Arial', 12))
-copy_button.pack(pady=10)
+password_entry = tk.Entry(frame, width=40, font=('Arial', 12), state=tk.DISABLED, bg="#ECF0F1", relief="flat")
+password_entry.grid(row=2, columnspan=2, pady=5)
+
+copy_button = tk.Button(frame, text="Copy to Clipboard", command=copy_to_clipboard, font=('Arial', 12), bg="#2980B9", fg="white", relief="flat", activebackground="#2471A3")
+copy_button.grid(row=3, columnspan=2, pady=10)
 
 # Run the main event loop
 root.mainloop()
